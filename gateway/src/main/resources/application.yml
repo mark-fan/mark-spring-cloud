@@ -7,9 +7,10 @@ spring:
         - id: nameRoot
           uri: lb://app1
           predicates:
-            - Path=/api/gateway/l1/**
+            - Path=/api/gateway/**
           filters:
-            - StripPrefix=2
+            ## 截取路径位数
+            - StripPrefix=1
 server:
   port: 80
 #注册中心

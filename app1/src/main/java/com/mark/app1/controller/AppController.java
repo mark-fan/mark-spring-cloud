@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author luofan
  */
-@RestController("/whichOne")
+@RestController
 public class AppController {
 
     @Value("${spring.application.name}")
@@ -16,7 +16,7 @@ public class AppController {
     @Value("${server.port}")
     private int port;
 
-    @RequestMapping
+    @RequestMapping("/whichOne")
     public String whichOne() {
         return "我是" + name + " ,端口：" + port;
     }
