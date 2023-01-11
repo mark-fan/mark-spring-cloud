@@ -10,17 +10,14 @@ spring:
         - id: app1
           predicates:
           - Path=/client/**
-          - Weight=service,25
           uri: lb://APP1
           filters:
             - StripPrefix=1
-        - id: app2
-          predicates:
-            - Path=/client/**
-            - Weight=service,75
-          uri: lb://APP2
-          filters:
-            - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@userKeyResolver}'
+                redis-rate-limiter.replenishRate: 1 # 允许每秒处理了多少个请求
+                redis-rate-limiter.burstCapacity: 1 # 令牌桶的容量（最高处理并发容量大小1）
 APP1:
   ribbon:
     NFLoadBalancerRuleClassName: com.mark.gateway.filter.MyRule
