@@ -2,9 +2,8 @@ spring:
   application:
     name: app1
 server:
-  port: 8082
+  port: 8081
 
-#×¢²áÖÐÐÄ
 eureka:
   client:
     service-url:

@@ -3,20 +3,13 @@ spring:
     name: gateway
   cloud:
     gateway:
-      routes:
-        - id: nameRoot
-          predicates:
-            - Path=/api/gateway/**
-          filters:
-            ## 截取路径位数
-            - StripPrefix=1
-          uri: lb://app1
+      discovery:
+        locator:
+          enabled: true
 server:
   port: 80
-#注册中心
 eureka:
   client:
-    #设置服务注册中心的URL
     service-url:
       defaultZone: http://localhost:8000/eureka/
   instance:
