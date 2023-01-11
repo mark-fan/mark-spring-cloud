@@ -23,7 +23,7 @@ public class GlobalCustomerFilter implements Ordered, GlobalFilter {
         System.out.println("hhahhaahha GlobalCustomerFilter");
         return chain.filter(exchange);
     }
-
+    //order越小 优先级越高
     @Override
     public int getOrder() {
         return 0;

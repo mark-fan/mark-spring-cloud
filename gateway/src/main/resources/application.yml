@@ -10,7 +10,15 @@ spring:
         - id: app1
           predicates:
           - Path=/client/**
+          - Weight=service,25
           uri: lb://APP1
+          filters:
+            - StripPrefix=1
+        - id: app2
+          predicates:
+            - Path=/client/**
+            - Weight=service,75
+          uri: lb://APP2
           filters:
             - StripPrefix=1
 APP1:
