@@ -1,0 +1,29 @@
+#服务端口
+server:
+  port: 8020
+
+#应用名称及验证账号
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          #https://github.com/yueyi2019/online-taxi-config-profile.git
+#          uri: https://github.com/mark-fan/yueche-config-profile
+          uri: https://github:com/yueyi2019/online-taxi-config-profil
+          username:
+          password:
+          #默认是秒，因为git慢
+          timeout: 30
+
+eureka:
+  client:
+    #设置服务注册中心的URL
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}

@@ -1,0 +1,11 @@
+server:
+  port: 8025
+
+eureka:
+  client:
+    #设置服务注册中心的URL
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
