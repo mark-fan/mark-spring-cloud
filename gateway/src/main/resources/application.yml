@@ -16,6 +16,7 @@ spring:
 APP1:
   ribbon:
     NFLoadBalancerRuleClassName: com.mark.gateway.filter.MyRule
+
 server:
   port: 80
 eureka:
