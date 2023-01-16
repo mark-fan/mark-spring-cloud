@@ -16,9 +16,9 @@ public class Client2Application {
         SpringApplication.run(Client2Application.class, args);
     }
 
-//    @Bean
-//    @LoadBalanced
-//    public RestTemplate restTemplate() {
-//        return new RestTemplate();
-//    }
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

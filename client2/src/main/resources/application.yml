@@ -4,7 +4,12 @@ spring:
 server:
   port: 8089
 
-
+feign:
+  compression:
+    request:
+      mime-types:
+        - text/xml
+      min-request-size: 2048
 
 eureka:
   client:
