@@ -21,6 +21,7 @@
         <module>client1</module>
         <module>client2</module>
         <module>common</module>
+        <module>zuul</module>
     </modules>
 
     <dependencyManagement>

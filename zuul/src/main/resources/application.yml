@@ -1,0 +1,46 @@
+
+
+
+mark-client1:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
+
+server:
+  port: 9000
+
+spring:
+  application:
+    name: mark-zuul
+
+##路由端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      ##默认是never
+      show-details: ALWAYS
+      enabled: true
+    routes:
+      enabled: true
+
+##基于服务的路由
+zuul:
+  routes:
+    mark-client1: /zuul-client1/**
+    mark-client2: /zuul-client2/**
+  prefix: /api
+  ##是否移除前缀
+  strip-prefix: true
+  #一下配置，表示忽略下面的值向微服务传播，以下配置为空表示：所有请求头都透传到后面微服务。
+  sensitive-headers: token
