@@ -31,5 +31,9 @@ public class FeignController {
         return ResponseResult.success(restTemplateService.getClient(String.valueOf(input)));
     }
 
-
+    //使用whichOne测负载均衡
+    @RequestMapping("/ribbon")
+    public ResponseResult ribbon(){
+        return ResponseResult.success(feignService.whichOne());
+    }
 }

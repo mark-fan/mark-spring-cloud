@@ -11,6 +11,9 @@ feign:
         - text/xml
       min-request-size: 2048
 
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
 eureka:
   client:
     service-url:
