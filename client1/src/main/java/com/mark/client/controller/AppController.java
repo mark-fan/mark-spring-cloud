@@ -1,11 +1,11 @@
-package com.mark.app1.controller;
+package com.mark.client.controller;
 
-import com.mark.app1.model.User;
+import com.mark.client.model.User;
+import com.mark.client.service.Client1Service;
+import com.mark.common.dto.ResponseResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,8 @@ import java.util.List;
 @RestController
 public class AppController {
 
+    @Autowired
+    Client1Service client1Service;
     private static List<User> userList = new ArrayList<>();
 
     static {
@@ -47,4 +49,10 @@ public class AppController {
     public List<User> getAll() {
         return userList;
     }
+
+    @RequestMapping(value = "/client/{input}", method = RequestMethod.GET)
+    public ResponseResult<String> getClient(@PathVariable("input") String input) {
+        return client1Service.getClient(input);
+    }
+
 }

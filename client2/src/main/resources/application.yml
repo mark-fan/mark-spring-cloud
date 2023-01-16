@@ -1,8 +1,10 @@
 spring:
   application:
-    name: app2
+    name: mark-client2
 server:
-  port: 8084
+  port: 8089
+
+
 
 eureka:
   client:
