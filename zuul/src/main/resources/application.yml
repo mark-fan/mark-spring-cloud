@@ -12,7 +12,10 @@ eureka:
   instance:
     hostname: localhost
     instance-id: ${spring.application.name}:${server.port}
-
+    #æœåŠ¡åˆ·æ–°æ—¶é—´é…ç½®ï¼Œæ¯éš”è¿™ä¸ªæ—¶é—´ä¼šä¸»åŠ¨å¿ƒè·³ä¸€æ¬¡
+    lease-renewal-interval-in-seconds: 1
+    #æœåŠ¡è¿‡æœŸæ—¶é—´é…ç½®,è¶…è¿‡è¿™ä¸ªæ—¶é—´æ²¡æœ‰æ¥æ”¶åˆ°å¿ƒè·³EurekaServerå°±ä¼šå°†è¿™ä¸ªå®ä¾‹å‰”é™¤
+    lease-expiration-duration-in-seconds: 1
 server:
   port: 9000
 
@@ -20,7 +23,7 @@ spring:
   application:
     name: mark-zuul
 
-##Â·ÓÉ¶Ëµã
+##Â·ï¿½É¶Ëµï¿½
 management:
   endpoints:
     web:
@@ -28,19 +31,17 @@ management:
         include: "*"
   endpoint:
     health:
-      ##Ä¬ÈÏÊÇnever
+
       show-details: ALWAYS
       enabled: true
     routes:
       enabled: true
 
-##»ùÓÚ·şÎñµÄÂ·ÓÉ
-zuul:
-  routes:
-    mark-client1: /zuul-client1/**
-    mark-client2: /zuul-client2/**
-  prefix: /api
-  ##ÊÇ·ñÒÆ³ıÇ°×º
-  strip-prefix: true
-  #Ò»ÏÂÅäÖÃ£¬±íÊ¾ºöÂÔÏÂÃæµÄÖµÏòÎ¢·şÎñ´«²¥£¬ÒÔÏÂÅäÖÃÎª¿Õ±íÊ¾£ºËùÓĞÇëÇóÍ·¶¼Í¸´«µ½ºóÃæÎ¢·şÎñ¡£
-  sensitive-headers: token
+
+#zuul:
+#  routes:
+#    mark-client1: /zuul-client1/**
+#    mark-client2: /zuul-client2/**
+#  prefix: /api
+#  strip-prefix: true
+#  sensitive-headers: token

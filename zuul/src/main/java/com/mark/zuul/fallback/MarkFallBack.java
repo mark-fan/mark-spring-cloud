@@ -1,4 +1,4 @@
-package com.mark.zuul.config;
+package com.mark.zuul.fallback;
 
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;

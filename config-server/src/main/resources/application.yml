@@ -1,29 +1,48 @@
-#·şÎñ¶Ë¿Ú
+
 server:
   port: 8020
 
-#Ó¦ÓÃÃû³Æ¼°ÑéÖ¤ÕËºÅ
+
 spring:
   application:
     name: config-server
-
   cloud:
     config:
       server:
         git:
           #https://github.com/yueyi2019/online-taxi-config-profile.git
-#          uri: https://github.com/mark-fan/yueche-config-profile
-          uri: https://github:com/yueyi2019/online-taxi-config-profil
-          username:
-          password:
-          #Ä¬ÈÏÊÇÃë£¬ÒòÎªgitÂı
+          uri: https://github.com/mark-fan/yueche-config-profile
+          username: mark-fan
+          password: 1991woshizhu14
+#          uri: https://github.com/yueyi2019/online-taxi-config-profile
+#          username:
+#          password:
           timeout: 30
+  redis:
+    host: 192.168.37.128
+    port: 6379
 
 eureka:
   client:
-    #ÉèÖÃ·şÎñ×¢²áÖĞĞÄµÄURL
+    enabled: true
     service-url:
       defaultZone: http://localhost:8000/eureka/
   instance:
     hostname: localhost
     instance-id: ${spring.application.name}:${server.port}
+    virtual-host-name: config-server
+    #æœåŠ¡åˆ·æ–°æ—¶é—´é…ç½®ï¼Œæ¯éš”è¿™ä¸ªæ—¶é—´ä¼šä¸»åŠ¨å¿ƒè·³ä¸€æ¬¡
+    lease-renewal-interval-in-seconds: 1
+    #æœåŠ¡è¿‡æœŸæ—¶é—´é…ç½®,è¶…è¿‡è¿™ä¸ªæ—¶é—´æ²¡æœ‰æ¥æ”¶åˆ°å¿ƒè·³EurekaServerå°±ä¼šå°†è¿™ä¸ªå®ä¾‹å‰”é™¤
+    lease-expiration-duration-in-seconds: 1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #ymlåŠ åŒå¼•å·ï¼Œpropertiesä¸ç”¨åŠ 
+        include: "*"
+logging:
+  level:
+    org.springframework.cloud: debug
+    org.springframework.boot: debug

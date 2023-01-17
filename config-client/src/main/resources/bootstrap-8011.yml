@@ -1,7 +1,7 @@
 #服务端口
 server:
-  port: 80
-#应用名称，配置文件名，此时:service-verification-code-qa.yml
+  port: 8011
+#应用名称，配置文件名，此时:config-client-dev.yml
 spring: 
   application: 
     name: config-client
@@ -9,10 +9,8 @@ spring:
 #先注释掉 配置中心
   cloud: 
     config:
-    # 和下面的discovery互斥
-#      uri:
-#      - http://localhost:6001
       discovery:
+        # 表示，使用discovery中的config server，而不是 自己指定uri，默认false。
         enabled: true
         service-id: config-server
       profile: dev
@@ -38,4 +36,4 @@ management:
         #yml加双引号，properties不用加
         include: "*"
         
-env: NaN  
+env: NaN
